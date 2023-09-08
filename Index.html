@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <title>Landing Page - Task 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,700;0,800;1,300&family=Poppins:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+
+        body {
+            background-color: whitesmoke;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .welcome-line {
+
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 100;
+            position: relative;
+        }
+
+        .fixed-nav {
+
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 0 100px;
+        }
+
+        nav {
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 45px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0 150px;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: large;
+        }
+
+        nav ul li a:hover {
+            text-decoration: none;
+            color: rgb(175, 175, 175);
+        }
+
+        .left {
+            color: black;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form input[type="text"] {
+            border: 2px solid;
+            padding: 8px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .search-form button {
+            background-color: transparent;
+            border: none;
+            padding: 8px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .login-icon {
+            color: black;
+            padding: 8px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            position: relative;
+            padding: -30px;
+        }
+
+        .slide-container .slide {
+            min-width: 100hv;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 9%;
+            padding-bottom: 80px;
+        }
+
+        .container .slide-container .slide .content {
+            flex: 1 1 350px;
+            animation: slideContent .4s linear .6s backwards;
+        }
+
+        @keyframes slideContent {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        .content h3 {
+            color: black;
+            font-size: 35px;
+            font-weight: bold
+        }
+
+        .content p {
+            color: grey;
+            font-size: 15px;
+            padding: 10px 0;
+        }
+
+        .container .slide-container .slide .image {
+            flex: 1 1 500px;
+        }
+
+        .container .slide-container .slide .image img {
+            width: 90%;
+            height: 500px;
+            animation: slideImage .4s linear;
+        }
+
+        @keyframes slideImage {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
+        .container .slide-container .slide .content .btn {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: black;
+            color: white;
+            font-size: 17px;
+            padding: 9px 40px;
+            border-radius: 1rem;
+        }
+
+        .container .slide-container .slide .content .btn:hover {
+
+            background-color: rgb(148, 142, 142);
+            border-radius: 1rem;
+        }
+
+        .container .slide-container {
+            display: none;
+        }
+
+        .container .slide-container.active {
+            display: block;
+        }
+
+        .container .slide-container:nth-child(1) .slide {
+            background: linear-gradient(90deg, whitesmoke 70%, #7e1480 30.1%);
+        }
+
+        .container .slide-container:nth-child(2) .slide {
+            background: linear-gradient(90deg, whitesmoke 70%, #7e1480 30.1%);
+        }
+
+        .container .slide-container:nth-child(3) .slide {
+            background: linear-gradient(90deg, whitesmoke 70%, #7e1480 30.1%);
+        }
+
+        .container #prev,
+        .container #next {
+            position: absolute;
+            top: 40%;
+            transform: rotateY('-50');
+            color: #fff;
+            background: black;
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            font-size: 40px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 700;
+
+        }
+
+        .container #prev:hover,
+        .container #next:hover {
+            background-color: gray;
+
+        }
+
+        .container #prev {
+            left: 20px;
+        }
+
+        .container #next {
+            right: 20px;
+        }
+
+        @media (max-width:500) {
+            .container #prev {
+                left: 0px;
+                top: 60%;
+            }
+
+            .container #next {
+                right: 0px;
+                top: 60%;
+            }
+        }
+
+        .servicesection {
+            max-width: 80vmax;
+            margin: auto;
+            text-align: left;
+            padding-top: 80px;
+            margin-top: 97px;
+            padding-bottom: 20px;
+        }
+
+        .servicesection h1 {
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            color: black;
+            text-decoration: underline;/
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0px;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .service-box {
+            padding: 1rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-align: center;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+
+
+        .service-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-box:hover .service-img {
+            transform: translateY(-10px);
+        }
+
+        .service-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            color: black;
+            position: relative;
+        }
+
+        .service-title h3 {
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .service-box p {
+            color: grey;
+            text-align: left;
+            margin-top: auto;
+        }
+
+        .service-img {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            border-radius: 20px;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s;
+        }
+
+        .icons {
+            width: 70px;
+            height: 70px;
+        }
+
+        .About-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 140px 0;
+            height: 100%;
+
+
+        }
+
+        .About-section>div {
+            width: 30%;
+        }
+
+        .About-leftsection {
+
+            width: 30%;
+            font-size: 300%;
+            font-weight: 600;
+            margin: 60px;
+            color: black;
+            white-space: nowrap;
+        }
+
+        .About-leftsection .Title {
+            text-decoration: underline;
+        }
+
+        .About-leftsection .intro {
+
+            font-size: 37%;
+            font-weight: 200;
+            color: grey;
+            margin-top: 20px;
+
+
+        }
+
+        .About-leftsection .detail {
+            font-size: 25%;
+            font-weight: 100;
+            color: grey;
+            display: block;
+            padding-top: 10px;
+        }
+
+        .About-leftsection .btn {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: black;
+            color: white;
+            font-size: 17px;
+            padding: 9px 40px;
+            border-radius: 1rem;
+        }
+
+        .About-leftsection .btn:hover {
+            background-color: rgb(148, 142, 142);
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+
+        .About-rightsection img {
+            margin-left: 60px;
+            margin-top: -15px;
+            width: 85%;
+
+        }
+
+
+        a[href^="mailto"] {
+            color: grey;
+            text-decoration: none;
+
+        }
+
+        a[href^="tel"] {
+            color: grey;
+            text-decoration: none;
+
+        }
+
+        a[href^="mailto"]:hover,
+        a[href^="tel"]:hover {
+            text-decoration: underline;
+        }
+
+        .contact-section {
+            background-color: whitesmoke;
+            padding-top: 80px;
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-left {
+            width: 45%;
+            text-align: left;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(139, 137, 137, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact-left h2 {
+            font-size: 30px;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 15px;
+        }
+
+        .contact-list h3 {
+            font-size: 20px;
+            color: black;
+        }
+
+        .contact-list i {
+            margin-right: 10px;
+            font-size: 24px;
+            color: black;
+        }
+
+        .contact-list .address {
+            color: grey;
+        }
+
+        .contact-right {
+            width: 45%;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact-right p {
+            font-size: 18px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+
+        .contact-form button:hover {
+            background-color: grey
+        }
+
+
+        footer {
+            background-color: black;
+            height: 240px;
+        }
+
+        .footer {
+            display: flex;
+            padding: 23px 120px;
+            justify-content: space-around;
+        }
+
+        .footer-first h3 {
+            font-size: 25px;
+        }
+
+        footer .side {
+            color: white;
+            font-size: 12px;
+        }
+
+        .footer li {
+            margin-top: 25px;
+            list-style: none;
+        }
+
+        .footer li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer>div {
+            width: 230px;
+        }
+
+        .footer-second span {
+            text-align: center;
+            font-size: large;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .footer-second ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .footer-second ul li {
+            margin: 0;
+            display: inline;
+            margin-right: 15px;
+        }
+
+        .footer-third span {
+            text-align: center;
+            font-size: large;
+            font-weight: bold;
+            margin-left: 70px;
+            vertical-align: middle;
+        }
+
+        .footer-third .social {
+            font-size: 30px;
+            vertical-align: middle;
+            margin-top: 5px;
+            margin-left: 40px;
+        }
+
+        .fa-facebook {
+            color: white;
+        }
+
+        .fa-twitter {
+            color: white;
+        }
+
+        .fa-instagram {
+            padding: 15px;
+            color: white;
+        }
+
+
+        footer .footer-rights {
+            text-align: center;
+            color: white;
+            padding-top: 50px;
+        }
+
+        .navBar {
+            position: sticky;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #services,
+        #about,
+        #contact {
+            padding-top: 130px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navBar">
+        <div class="welcome-line">
+            <p>Discount offer till 14th oct....</p>
+        </div>
+        <nav class="fixed-nav">
+            <div class="left">Tech Solutions</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+            </div>
+            <div class="search-form">
+                <input type="text" placeholder="Search">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="login-icon"><i class="fas fa-user"></i></div>
+        </nav>
+        </nav>
+
+    </header>
+    <main>
+        <section class="Slider">
+            <div class="container">
+                <div class="slide-container active">
+                    <div class="slide">
+                        <div class="content">
+                            <h3>1. Website Front-End</h3>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse totam nostrum cupiditate
+                                iste placeat natus autem pariatur recusandae, aliquid impe.
+                            </p>
+                            <a href="#" class="btn"> Learn More</a>
+                        </div>
+                        <div class="image">
+                            <img src="frontend.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slide-container ">
+                    <div class="slide">
+                        <div class="content">
+                            <h3>2. Requirement Analyst</h3>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse totam nostrum cupiditate
+                                iste placeat natus autem pariatur recusandae, aliquid impe.
+                            </p>
+                            <a href="#" class="btn"> Learn More</a>
+                        </div>
+                        <div class="image">
+                            <img src="Req-Analyst.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="slide-container">
+                    <div class="slide">
+                        <div class="content">
+                            <h3>3. Digital Marketing</h3>
+                            <p>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse totam nostrum cupiditate
+                                iste placeat natus autem pariatur recusandae, aliquid impe.
+                            </p>
+                            <a href="#" class="btn"> Learn More</a>
+                        </div>
+                        <div class="image">
+                            <img src="Digital marketing.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="prev" onclick="prev()">
+                    < </div>
+                        <div id="next" onclick="next()"> > </div>
+
+
+                </div>
+
+        </section>
+
+        <section class="servicesection" id="services">
+            <h1>Our Services</h1>
+            <div class="service-container">
+                <div class="service-box">
+                    <div class="service-title">
+                        <div class="service-img">
+                            <img src="FE.png" class="icons">
+                        </div>
+                        <h3>Front-End development</h3>
+                    </div>
+                    <p> Our most valuable offering is undoubtedly our expertise in frontend development. With a
+                        dedicated team of skilled professionals, we excel in crafting visually stunning and
+                        user-friendly interfaces that leave a lasting impression.</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-title">
+                        <div class="service-img">
+                            <img src="Analyst.png" class="icons">
+                        </div>
+                        <h3>Requirement analysis</h3>
+                    </div>
+                    <p>In addition to our exceptional frontend development, we also specialize in comprehensive
+                        requirement analysis. We understand that a successful project begins with a deep understanding
+                        of our clients' needs and objectives. Our experienced team meticulously evaluates project
+                        requirements, identifies potential challenges, and works closely with stakeholders to ensure
+                        that every detail is considered.</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-title">
+                        <div class="service-img">
+                            <img src="Digital marketing.png" class="icons">
+                        </div>
+                        <h3>Digital Marketing</h3>
+                    </div>
+                    <p>Complementing our frontend development and rigorous requirement analysis, we excel in digital
+                        marketing services. Our team employs SEO, social media, PPC, and content marketing to enhance
+                        your online visibility and drive results.Our integrated approach guarantees your business's
+                        success in the digital sphere.</p>
+                </div>
+        </section>
+
+        <section class="About-section" id="about">
+            <div class="About-leftsection">
+                <span class="Title">About Us</span>
+                <div class="intro"> Innovate, Create, Elevate </div>
+                <span class="detail">We are a dynamic team of tech enthusiasts and creative minds dedicated to
+                    innovation and excellence.</span>
+                <span class="detail"> With a strong foundation in requirement analysis, we meticulously explore and
+                </span>
+                <span class="detail"> understand our clients' needs and objectives. Our expertise extends to crafting
+                    captivating </span>
+                <span class="detail">front-end solutions that leave lasting impressions.</span>
+                <span class="detail">Through our comprehensive digital marketing strategies, we harness the power of
+                    SEO,</span>
+                <span class="detail">
+                    social media, PPC, and content marketing to enhance your online visibility and drive tangible
+                    results.
+                </span>
+                <div class="buttons">
+                    <button class="btn">Read More</button>
+
+                </div>
+            </div>
+            <div class="About-rightsection">
+                <img src="home.png" alt="">
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="contact-container">
+                <div class="contact-left">
+                    <h2>Contact Me</h2>
+                    <ul class="contact-list">
+                        <li>
+                            <h3><i class="fas fa-phone"></i>Phone</h3>
+                            <span><a href="telto:+923000000000">+92 300 0000000</a></span>
+                        </li>
+                        <li>
+                            <h3><i class="fas fa-envelope"></i>Email Address</h3>
+                            <span><a href="mailto:techsolutions@gmai.com">Techsolutions@gmail.com</a></span>
+                        </li>
+                        <li>
+                            <h3><i class="fas fa-map-marker-alt"></i>Official Address</h3>
+                            <span class="address"> 326 Jermain Camp, new york' Nebraska</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-right">
+
+                    <p>Have A Query Or Need Assistance? Feel Free To Reach Out To Us.</p>
+                    <form action="" class="contact-form">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Subject">
+                        <textarea name="message" rows="7" placeholder="Message"></textarea>
+                        <button class="btn" type="submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>Tech Solutions</h3>
+                <div class="side">Innovate, Create, Elevate</div>
+                <li><a href="#about">About Us</a></li>
+            </div>
+
+            <div class="footer-second">
+                <ul>
+                    <span> More</span>
+                    <li><a href="#Slider">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-third">
+                <span>Follow</span>
+                <div class="social">
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169 Muneeb Ahmad | All rights reserved.
+        </div>
+    </footer>
+    <script>
+        let slides = document.querySelectorAll('.slide-container');
+        let index = 0;
+
+        function next() {
+            slides[index].classList.remove('active')
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }
+        function prev() {
+            slides[index].classList.remove('active')
+            index = (index - 1 + slides.length) % slides.length;
+            slides[index].classList.add('active');
+        }
+
+        setInterval(next, 5000); 
+    </script>
+</body>
+
+</html>
